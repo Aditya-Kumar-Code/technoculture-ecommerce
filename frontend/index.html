@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce App</title>
+</head>
+<body>
+    <h1>E-commerce App</h1>
+    <div>
+        <h2>Place Order</h2>
+        <label>
+            Item:
+            <input type="text" id="item" />
+        </label>
+        <br />
+        <label>
+            Quantity:
+            <input type="text" id="quantity" />
+        </label>
+        <br />
+        <button onclick="placeOrder()">Place Order</button>
+    </div>
+    <div>
+        <h2>Orders</h2>
+        <ul id="orderList"></ul>
+    </div>
+    <script src="./scripts/app.js"></script>
+</body>
+</html>
