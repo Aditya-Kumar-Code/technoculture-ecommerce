@@ -1,3 +1,4 @@
+<!-- Home Page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,24 +8,12 @@
 </head>
 <body>
     <h1>E-commerce App</h1>
-    <div>
-        <h2>Place Order</h2>
-        <label>
-            Item:
-            <input type="text" id="item" />
-        </label>
-        <br />
-        <label>
-            Quantity:
-            <input type="text" id="quantity" />
-        </label>
-        <br />
-        <button onclick="placeOrder()">Place Order</button>
-    </div>
-    <div>
-        <h2>Orders</h2>
-        <ul id="orderList"></ul>
-    </div>
-    <script src="./scripts/app.js"></script>
+    <nav>
+        <ul>
+            <li><a href="order.html">Place Order</a></li>
+            <li><a href="inventory.html">Check Inventory</a></li>
+            <li><a href="payment.html">Process Payment</a></li>
+        </ul>
+    </nav>
 </body>
 </html>

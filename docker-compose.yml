@@ -5,13 +5,9 @@ services:
     build:
       context: ./services/order_service
     ports:
-      - "8000:8000"
-    depends_on:
-      - dapr
+      - "8001:80"  # Adjust the port to match the order service's port
     environment:
-      - DAPR_HTTP_PORT=3500
-      - DAPR_GRPC_PORT=50001
-
+      - FASTAPI_ENV=development
   dapr:
     image: "daprio/dapr:latest"
     command: ["./placement", "--app-id", "ecommerceapp"]

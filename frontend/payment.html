@@ -1,0 +1,28 @@
+<!-- Process Payment Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Payment</title>
+</head>
+<body>
+    <h1>Process Payment</h1>
+    <label>
+        Order ID:
+        <input type="text" id="orderId" />
+    </label>
+    <br />
+    <label>
+        Amount:
+        <input type="text" id="amount" />
+    </label>
+    <br />
+    <button onclick="processPayment()">Process Payment</button>
+    <div>
+        <h2>Payment Status</h2>
+        <p id="paymentStatus"></p>
+    </div>
+    <script src="./scripts/payment.js"></script>
+</body>
+</html>
