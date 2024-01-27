@@ -5,19 +5,46 @@ services:
     build:
       context: ./services/order_service
     ports:
-      - "8001:80"  # Adjust the port to match the order service's port
-    environment:
-      - FASTAPI_ENV=development
-  dapr:
-    image: "daprio/dapr:latest"
-    command: ["./placement", "--app-id", "ecommerceapp"]
+      - "8001:80"
+    depends_on:
+      - dapr-order-service
+
+  payment-service:
+    build:
+      context: ./services/payment_service
+    ports:
+      - "8003:80"
+    depends_on:
+      - dapr-payment-service
+
+  inventory-service:
+    build:
+      context: ./services/inventory_service
+    ports:
+      - "8004:80"
+    depends_on:
+      - dapr-inventory-service
+
+  dapr-order-service:
+    image: "daprio/dapr"
+    command: ["./placement", "-app-id", "order-service", "-dapr-http-port", "3500", "-placement-host-address", "order-service"]
     ports:
       - "3500:3500"
-      - "50001:50001"
+    expose:
+      - "3500"
 
-  frontend:
-    image: nginx:alpine
+  dapr-payment-service:
+    image: "daprio/dapr"
+    command: ["./placement", "-app-id", "payment-service", "-dapr-http-port", "3501", "-placement-host-address", "payment-service"]
     ports:
-      - "3000:80"
-    volumes:
-      - ./frontend:/usr/share/nginx/html:ro
+      - "3501:3500"
+    expose:
+      - "3501"
+
+  dapr-inventory-service:
+    image: "daprio/dapr"
+    command: ["./placement", "-app-id", "inventory-service", "-dapr-http-port", "3502", "-placement-host-address", "inventory-service"]
+    ports:
+      - "3502:3500"
+    expose:
+      - "3502"
